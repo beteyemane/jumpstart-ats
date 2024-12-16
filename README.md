@@ -1,46 +1,29 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
+# Jumpstart Case Study
 
 In the project directory, you can run:
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Jumpstart ATS
+The brief was to come up with a design to help startups streamline their recruitment processes. The goal was to create a simple, intuitive system that allows to effectively manage candidate progression.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Key Features:
+Drag & Drop Interface: The ATS includes a drag & drop interface with default columns such as "Applied", "1st Round Interview", "Offer", and "Rejected". This allows users to easily move candidates through the stages, ensuring a smooth workflow and faster decision making.
 
-### `npm test`
+## Customisable Columns: 
+Users can add or remove columns to tailor the workflow to suit the needs of their organisation.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Candidate Overview: 
+A “view more” feature allows users to expand a candidate’s profile to view additional details. This helps teams to quickly assess all candidates at a glance, and then dig deeper into the profiles of the candidates they are interested in. This functionality is aimed at improving speed and accuracy in reviewing applicants without overwhelming users with unnecessary information.
 
-### `npm run build`
+## Notes 
+Pop-up: Users can click on the notes icon to open a pop-up and add or view notes about candidates. I didn't have enough time to complete the functionality for this feature, but hopefully you can visualise how it could allow users easily capture and review key insights about candidates.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## If I had more time:
+Editable Column Names: I would implement the ability to edit column names, allowing the ATS to be even more flexible and suited to the specific needs of each organisation.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Notes Functionality: 
+I would complete the notes section, ensuring it fully integrates into the candidate workflow and makes it easier to track candidate-specific feedback and updates.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Styling: 
+Further work would be done on the styling and user interface, aiming to enhance the overall user experience and provide a more polished and professional design.
