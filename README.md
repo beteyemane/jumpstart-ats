@@ -5,7 +5,7 @@ In the project directory, you can run:
 ### `npm start`
 
 ## Jumpstart ATS
-This project provides the foundational version of an improved Applicant Tracking System (ATS), designed to help startups streamline their recruitment processes. The goal was to create a simple, intuitive system that allows to effectively manage candidate progression.
+The brief was to come up with a design to help startups streamline their recruitment processes. The goal was to create a simple, intuitive system that allows to effectively manage candidate progression.
 
 ## Key Features:
 Drag & Drop Interface: The ATS includes a drag & drop interface with default columns such as "Applied", "1st Round Interview", "Offer", and "Rejected". This allows users to easily move candidates through the stages, ensuring a smooth workflow and faster decision making.
