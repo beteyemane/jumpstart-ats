@@ -117,6 +117,7 @@ export const candidates: { [key: string]: Candidate } = {
     cvRaw: "https://drive.google.com/file/d/1example_CV2/view?usp=drive_link",
     photo: "../sophie.jpg",
     github: null,
+    technologies: "JavaScript, Typescript, Node.js",
     workExperience: [
       {
         company: "Amazon",
@@ -141,7 +142,7 @@ export const candidates: { [key: string]: Candidate } = {
     topAchievement: "Product, Operations",
     languages: "5 days a week in office",
     generalistRoles: "£40k",
-    preferredWorkingStyle: "£50k",
+    preferredWorkingStyle: "Hybrid",
     minSalary: "£40k",
     idealSalary: "£50k",
     videoIntro: "https://share.vidyard.com/watch/example2?autoplay=1",
@@ -170,6 +171,7 @@ export const candidates: { [key: string]: Candidate } = {
     cvRaw: "https://drive.google.com/file/d/1example_CV3/view?usp=drive_link",
     photo: "../james.jpg",
     github: "https://github.com/jameslee",
+    technologies: "JavaScript, Typescript, React, Node.js",
     workExperience: [
       {
         company: "Spotify",
@@ -194,7 +196,7 @@ export const candidates: { [key: string]: Candidate } = {
     topAchievement: "Founder Associate, Customer Success",
     languages: "Hybrid",
     generalistRoles: "£55k",
-    preferredWorkingStyle: "£65k",
+    preferredWorkingStyle: "Remote or Hybrid",
     minSalary: "£55k",
     idealSalary: "£65k",
     videoIntro: "https://share.vidyard.com/watch/example3?autoplay=1",
