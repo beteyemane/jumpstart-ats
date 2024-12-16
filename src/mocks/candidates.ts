@@ -1,7 +1,7 @@
-import { Candidate } from "../types/Candidate";
+import { Candidate, Status } from "../types/Candidate";
 
 export const candidates: { [key: string]: Candidate } = {
-  item1: {
+  candidate1: {
     id: 1,
     email: "rachel@jumpstart-uk.com",
     fullName: "Rachel Howe",
@@ -48,12 +48,12 @@ export const candidates: { [key: string]: Candidate } = {
     matchType: "Application",
     applicationRationale:
       "As a proactive problem-solver with a track record of excelling in fast-paced environments, I thrive on wearing multiple hats to support ambitious goals. I bring sharp analytical skills, strategic thinking, and a hands-on approach to executing key projects. My experience in streamlining processes, managing stakeholders, and driving growth aligns with the dynamic needs of a Founder’s Associate role. I’m excited to collaborate directly with founders, turning ideas into impactful outcomes and ensuring operational excellence.",
-    stage: "Interviewing",
+    stage: Status.Interviewing,
     stageLastModified: "09/12/2024",
     notes: "",
     technologies: "JavaScript, Node.js",
   },
-  item2: {
+  candidate2: {
     id: 2,
     email: "alex@gmail.com",
     fullName: "Alex Carter",
@@ -96,12 +96,12 @@ export const candidates: { [key: string]: Candidate } = {
     matchType: "Application",
     applicationRationale:
       "With a proven ability to adapt and deliver in high-pressure environments, I excel at juggling multiple responsibilities to achieve ambitious targets. My blend of analytical thinking, strategic insight, and hands-on execution enables me to tackle complex challenges and drive meaningful results. Having honed my skills in optimizing processes and fostering collaboration, I’m eager to partner with founders to transform ideas into impactful projects and contribute to the success of a dynamic organization.",
-    stage: "Interviewing",
+    stage: Status.Interviewing,
     stageLastModified: "06/12/2024",
     notes: "",
     technologies: "Python",
   },
-  item3: {
+  candidate3: {
     id: 3,
     email: "sophie@gmail.com",
     fullName: "Sophie Green",
@@ -151,11 +151,11 @@ export const candidates: { [key: string]: Candidate } = {
     matchType: "Application",
     applicationRationale:
       "I thrive in environments that demand adaptability, problem-solving, and a focus on delivering results. My background in managing diverse projects, streamlining operations, and building strong stakeholder relationships equips me to navigate the dynamic challenges of a Founder’s Associate role. By combining strategic vision with a practical, action-oriented mindset, I aim to support founders in driving growth, overcoming obstacles, and turning bold ideas into measurable success.",
-    stage: "Interviewing",
+    stage: Status.Interviewing,
     stageLastModified: "10/12/2024",
     notes: "",
   },
-  item4: {
+  candidate4: {
     id: 2,
     email: "james@gmail.com",
     fullName: "James Lee",

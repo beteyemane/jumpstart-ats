@@ -40,27 +40,34 @@ export interface Candidate {
   notes?: string;
 }
 
+export enum Status {
+  Applied = "Applied",
+  Interviewing = "Interviewing",
+  Offered = "Offered",
+  Rejected = "Rejected",
+}
+
 export interface ColumnType {
   id: string;
   title: string;
-  items: string[];
+  candidates: string[];
 }
 
 export interface ColumnProps {
   column: ColumnType;
-  items: Record<string, Candidate>;
+  candidates: Record<string, Candidate>;
   updateNotes: (candidateId: string, newNotes: string) => void;
 }
 
 export type Column = {
   id: string;
   title: string;
-  items: string[];
+  candidates: string[];
 };
 
 export type Data = {
   columns: Record<string, Column>;
-  items: Record<string, Candidate>;
+  candidates: Record<string, Candidate>;
 };
 
 export interface ItemType {
@@ -83,3 +90,5 @@ export interface NotesModalProps {
   open: boolean;
   updateNotes: (candidateId: string, newNotes: string) => void;
 }
+
+export type ColumnKey = "applied" | "interviewing" | "offer" | "rejected";

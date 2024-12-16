@@ -1,45 +1,69 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { DndContext, DragEndEvent } from "@dnd-kit/core";
 import Column from "../components/Column";
-import { Data } from "../types/Candidate";
+import { Candidate, ColumnKey, Data } from "../types/Candidate";
 import { candidates } from "../mocks/candidates";
 
 const Candidates = () => {
-  const initialData: Data = {
-    columns: {
-      column1: {
-        id: "column1",
-        title: "Applied",
-        items: ["item1", "item2", "item3", "item4"],
-      },
-      column2: { id: "column2", title: "1st Round Interview", items: [] },
-      column3: { id: "column3", title: "Offer", items: [] },
-      column4: { id: "column4", title: "Rejected", items: [] },
+  const initialColumns = {
+    applied: { id: "applied", title: "Applied", candidates: [] as string[] },
+    interviewing: {
+      id: "interviewing",
+      title: "1st Round Interview",
+      candidates: [] as string[],
     },
-    items: candidates,
+    offer: { id: "offer", title: "Offer", candidates: [] as string[] },
+    rejected: { id: "rejected", title: "Rejected", candidates: [] as string[] },
   };
 
-  const [data, setData] = useState<Data>(initialData);
+  const initializeData = (candidates: Record<string, Candidate>): Data => {
+    // create a deep copy of the columns to avoid mutating the original structure
+    const columns = JSON.parse(
+      JSON.stringify(initialColumns),
+    ) as typeof initialColumns;
+
+    // populate candidates into the appropriate column
+    for (const [key, candidate] of Object.entries(candidates)) {
+      const columnKey = candidate.stage.toLowerCase() as ColumnKey;
+      if (columns[columnKey]) {
+        columns[columnKey].candidates.push(key);
+      }
+    }
+
+    return { columns, candidates };
+  };
+
+  const [data, setData] = useState<Data>({
+    columns: initialColumns,
+    candidates: {},
+  });
+
+  useEffect(() => {
+    setData(initializeData(candidates));
+  }, []);
 
   const updateNotes = (candidateId: string, newNotes: string) => {
     setData((prevData) => ({
       ...prevData,
-      items: {
-        ...prevData.items,
+      candidates: {
+        ...prevData.candidates,
         [candidateId]: {
-          ...prevData.items[candidateId],
+          ...prevData.candidates[candidateId],
           notes: newNotes,
         },
       },
+      columns: prevData?.columns ?? {}, // Ensure columns is not undefined
     }));
   };
 
   const addColumn = () => {
+    // would need to create a new stage here
+
     const newColumnId = `column${Object.keys(data.columns).length + 1}`;
     const newColumn = {
       id: newColumnId,
       title: `New Column ${Object.keys(data.columns).length + 1}`,
-      items: [],
+      candidates: [],
     };
 
     setData((prevData) => ({
@@ -83,19 +107,19 @@ const Candidates = () => {
         const draggedItemId = active.id as string;
 
         // Remove the item from the source column
-        const updatedFromItems = fromColumn.items.filter(
+        const updatedFromItems = fromColumn.candidates.filter(
           (id) => id !== draggedItemId,
         );
 
         // Add the item to the target column
-        const updatedToItems = [...toColumn.items, draggedItemId];
+        const updatedToItems = [...toColumn.candidates, draggedItemId];
 
         return {
           ...prevData,
           columns: {
-            ...prevData.columns,
-            [fromColumnId]: { ...fromColumn, items: updatedFromItems },
-            [toColumnId]: { ...toColumn, items: updatedToItems },
+            ...prevData?.columns,
+            [fromColumnId]: { ...fromColumn, candidates: updatedFromItems },
+            [toColumnId]: { ...toColumn, candidates: updatedToItems },
           },
         };
       });
@@ -103,27 +127,33 @@ const Candidates = () => {
   };
   return (
     <DndContext onDragEnd={handleDragEnd}>
-      <div
-        className="container"
-        style={{ display: "flex", gap: "16px", height: "100%" }}
-      >
-        {Object.values(data.columns).map((column) => (
-          <>
-            <Column
-              key={column.id}
-              column={column}
-              items={data.items}
-              updateNotes={updateNotes}
-            />
-            <button onClick={() => removeColumn(column.id, column.items)}>
-              <img width="10px" src="../cross.webp" alt="remove column" />
-            </button>
-          </>
-        ))}
-        <button className="add-column" onClick={addColumn}>
-          Add Column
-        </button>
-      </div>
+      {data ? (
+        <div
+          className="container"
+          style={{ display: "flex", gap: "16px", height: "100%" }}
+        >
+          {Object.values(data.columns).map((column) => (
+            <>
+              <Column
+                key={column.id}
+                column={column}
+                candidates={data.candidates}
+                updateNotes={updateNotes}
+              />
+              <button
+                onClick={() => removeColumn(column.id, column.candidates)}
+              >
+                <img width="10px" src="../cross.webp" alt="remove column" />
+              </button>
+            </>
+          ))}
+          <button className="add-column" onClick={addColumn}>
+            Add Column
+          </button>
+        </div>
+      ) : (
+        <h1>Loading!</h1>
+      )}
     </DndContext>
   );
 };

@@ -2,7 +2,7 @@ import { useDroppable } from "@dnd-kit/core";
 import Item from "./Item";
 import { ColumnProps } from "../types/Candidate";
 
-const Column = ({ column, items, updateNotes }: ColumnProps) => {
+const Column = ({ column, candidates, updateNotes }: ColumnProps) => {
   const { setNodeRef } = useDroppable({
     id: column.id,
   });
@@ -19,12 +19,12 @@ const Column = ({ column, items, updateNotes }: ColumnProps) => {
       className="column"
     >
       <h3>{column.title}</h3>
-      {column.items.map((itemId) => (
+      {column.candidates.map((itemId) => (
         <>
           <Item
             key={itemId}
             id={itemId}
-            item={items[itemId]}
+            item={candidates[itemId]}
             columnId={column.id}
             updateNotes={updateNotes}
           />
